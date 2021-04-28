@@ -18,7 +18,7 @@ jobs:
         yarn install
         yarn build
     - name: Build and Deploy
-      uses: jeoy/github-deploy-actions@master
+      uses: actions/setup-node@main
       env:
         COMMIT_EMAIL: hoa.tran@rikai.technology
         COMMIT_NAME: PhuHoaRikai
