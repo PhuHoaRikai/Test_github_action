@@ -6,9 +6,7 @@ on:
       - main
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       uses: google-github-actions/setup-gcloud@master
       with:
@@ -18,7 +16,6 @@ jobs:
         export_default_credentials: true
       run: gcloud info
 
-    steps:
       id: upload-file
       uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
       with:
