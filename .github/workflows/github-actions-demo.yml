@@ -8,15 +8,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: google-github-actions/setup-gcloud@master
+      - id: upload-file
+      uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
       with:
-        service_account_key: ${{ secrets.GCP_SA_KEY }}
-        export_default_credentials: true
-    - uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
-      with:
-          credentials: ${{ secrets.gcp_credentials }}
-          path: ../
-          destination: bizocean-portal-front
+        path: /path/to/file
+        destination: bucket-name/file
+
+    # steps:
+    # - uses: google-github-actions/setup-gcloud@master
+    #   with:
+    #     service_account_key: ${{ secrets.GCP_SA_KEY }}
+    #     export_default_credentials: true
+    # - uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
+    #   with:
+    #       credentials: ${{ secrets.gcp_credentials }}
+    #       path: ../
+    #       destination: bizocean-portal-front
 
 
     # - uses: google-github-actions/setup-gcloud@master
