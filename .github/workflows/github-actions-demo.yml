@@ -11,8 +11,8 @@ jobs:
     - id: upload-file
       uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
       with:
-        path: /path/to/file
-        destination: bucket-name/file
+        path: ../
+        destination: bizocean-portal-front
 
     # steps:
     # - uses: google-github-actions/setup-gcloud@master
