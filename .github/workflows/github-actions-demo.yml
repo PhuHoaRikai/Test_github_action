@@ -10,12 +10,12 @@ jobs:
     steps:
     -name: IN RA
       run: echo Hello, world!
-    - id: upload-file
-      uses: google-github-actions/upload-cloud-storage@main
-      with:
-        credentials: ${{ secrets.gcp_credentials }}
-        path: ../../
-        destination: bizocean-portal-front
+    # - id: upload-file
+    #   uses: google-github-actions/upload-cloud-storage@main
+    #   with:
+    #     credentials: ${{ secrets.gcp_credentials }}
+    #     path: ../../
+    #     destination: bizocean-portal-front
 # env:
 #       files: ${{steps.upload-files.outputs.uploaded}}
     # steps:
