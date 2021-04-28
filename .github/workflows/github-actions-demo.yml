@@ -8,8 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - id: upload-file
-      uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
+    - uses: google-github-actions/setup-gcloud@master
+      with:
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
+    - uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
       with:
         credentials: ${{ secrets.gcp_credentials }}
         path: ../
