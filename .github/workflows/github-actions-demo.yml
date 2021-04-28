@@ -12,8 +12,8 @@ jobs:
       uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
       with:
         credentials: ${{ secrets.gcp_credentials }}
-        path: /path/to/folder
-        destination: bucket-name/file
+        path: ../
+        destination: bizocean-portal-front
 
     # steps:
     # - uses: actions/checkout@v2
