@@ -8,16 +8,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      uses: google-github-actions/setup-gcloud@master
+    - uses: actions/checkout@v2
+    - uses: google-github-actions/setup-gcloud@master
       with:
         version: '290.0.1'
         project_id: ${{ secrets.GCP_PROJECT_ID }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
-      uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
-      with:
-        path: ../
-        destination: bizocean-portal-front
+    - run: gcloud info
+      # uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
+      # with:
+      #   path: ../
+      #   destination: bizocean-portal-front
 
     # steps:
     # - name: Checkout
