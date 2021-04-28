@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - id: upload-file
-        uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
-        with:
-          credentials: ${{ secrets.gcp_credentials }}
-          path: /path/to/folder
-          destination: bucket-name/file
+      uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
+      with:
+        credentials: ${{ secrets.gcp_credentials }}
+        path: /path/to/folder
+        destination: bucket-name/file
 
     # steps:
     # - uses: actions/checkout@v2
