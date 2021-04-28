@@ -17,12 +17,12 @@ jobs:
       run: |
         yarn install
         yarn build
-    # - name: Build and Deploy
-    #   uses: PhuHoaRikai/Test_github_action/v1
-    #   with:
-    #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-    #     BASE_BRANCH: main
-    #     BRANCH: gh-pages
-    #     FOLDER: .nuxt
+    - name: Build and Deploy
+      uses: PhuHoaRikai/Test_github_action@main
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BASE_BRANCH: main
+        BRANCH: gh-pages
+        FOLDER: .nuxt
 
 
