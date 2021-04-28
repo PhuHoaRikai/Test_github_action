@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: IN RA
-      run: echo Hello, world! ${{ secrets.gcp_abc }}
+      run: echo Hello, world! ${{ secrets.GCP_ABC }}
     # - id: upload-file
     #   uses: google-github-actions/upload-cloud-storage@main
     #   with:
