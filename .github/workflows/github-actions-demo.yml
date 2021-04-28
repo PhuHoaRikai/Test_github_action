@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - id: upload-file
+    - id: upload-file
       uses: GoogleCloudPlatform/github-actions/upload-cloud-storage@master
       with:
         path: /path/to/file
