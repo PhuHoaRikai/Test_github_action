@@ -24,7 +24,7 @@ jobs:
         gcloud info
         echo ls
         ls
-        echo ------------- ${{github.event.pull_request}} +++++
+        echo ------------- ${{github.event.pull_request}} +++++ ${{ github.event.number }}
     # - id: upload-file
     #   # uses: google-github-actions/upload-cloud-storage@main
     #   uses: google-github-actions/upload-cloud-storage@main
