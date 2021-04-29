@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: ls
+    - uses: actions/checkout@v1
 
     - uses: jwalton/gh-find-current-pr@v1
       id: findPr
