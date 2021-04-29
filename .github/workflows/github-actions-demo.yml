@@ -61,7 +61,7 @@ jobs:
         github-token: ${{ secrets.GH_TOKEN }}
         script: |
           const { issue: { number: issue_number }, repo: { owner, repo } } = context;
-          github.issues.createComment({ issue_number, owner, repo, body: 'GCPバケット/${{github.event.pull_request.number}} \n aaaaa /n bbbbbbb' });
+          github.issues.createComment({ issue_number, owner, repo, body: '確認用環境：GCPバケット/${{github.event.pull_request.number}}/front が見れるURL \n 確認用環境：GCPバケット/${{github.event.pull_request.number}}/storybook が見れるURL' });
 
 
     # - id: upload-file-story
