@@ -20,11 +20,12 @@ jobs:
     - name: Use gcloud CLI
       run: gcloud info
     - id: upload-file
-      uses: google-github-actions/upload-cloud-storage@main
+      # uses: google-github-actions/upload-cloud-storage@main
       uses: actions/setup-node@main
       with:
         path: ../../../
         destination: bizocean-portal-front
+
 
 
     # - uses: google-github-actions/setup-gcloud@master
