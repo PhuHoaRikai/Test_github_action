@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      run: ls
+    - run: ls
     # - name: Set up Cloud SDK
     #   uses: google-github-actions/setup-gcloud@master
     #   with:
