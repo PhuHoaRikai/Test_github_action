@@ -9,19 +9,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    # - uses: actions/checkout@v1
 
     - uses: jwalton/gh-find-current-pr@v1
       id: findPr
     # This will echo "Your PR is 7", or be skipped if there is no current PR.
-    - run: echo "Your PR is ${PR} ==="
+    - run: echo "Your PR is ${PR} ------------- pull_request:${{github.event.pull_request}} number:${{ github.event.number }} ----
       if: success() && steps.findPr.outputs.number
       env:
         PR: ${{ steps.findPr.outputs.pr }}
 
 
-    - name: Checkout 🛎
-      uses: actions/checkout@main
+    # - name: Checkout 🛎
+    #   uses: actions/checkout@main
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
       with:
