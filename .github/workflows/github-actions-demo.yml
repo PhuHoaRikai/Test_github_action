@@ -44,29 +44,29 @@ jobs:
         echo "============= Your PR is >>> ${{ steps.findPr.outputs.pr }} <<< ==============="
         echo "============= github.event_name is >>> ${{ github.event_name }} <<< ==============="
 
-    - name: Install dependencies 👨🏻‍💻
-      if: github.event_name == 'pull_request'
-      run: yarn
+    # - name: Install dependencies 👨🏻‍💻
+    #   if: github.event_name == 'pull_request'
+    #   run: yarn
 
-    - name: Build front 👨🏻‍💻
-      if: github.event_name == 'pull_request'
-      run: yarn build
+    # - name: Build front 👨🏻‍💻
+    #   if: github.event_name == 'pull_request'
+    #   run: yarn build
 
     - id: upload-file
       uses: google-github-actions/upload-cloud-storage@main
       if: github.event_name == 'pull_request'
       with:
-        path: ./.nuxt
+        path: ./pages
         destination: bizocean-portal-front/GCPバケット/${{github.event.pull_request.number}}
 
-    - name: 'Comment PR'
-      uses: actions/github-script@0.3.0
-      if: github.event_name == 'pull_request'
-      with:
-        github-token: ${{ secrets.GH_TOKEN }}
-        script: |
-          const { issue: { number: issue_number }, repo: { owner, repo } } = context;
-          github.issues.createComment({ issue_number, owner, repo, body: '確認用環境：GCPバケット/${{github.event.pull_request.number}}/front が見れるURL \n 確認用環境：GCPバケット/${{github.event.pull_request.number}}/storybook が見れるURL' });
+    # - name: 'Comment PR'
+    #   uses: actions/github-script@0.3.0
+    #   if: github.event_name == 'pull_request'
+    #   with:
+    #     github-token: ${{ secrets.GH_TOKEN }}
+    #     script: |
+    #       const { issue: { number: issue_number }, repo: { owner, repo } } = context;
+    #       github.issues.createComment({ issue_number, owner, repo, body: '確認用環境：GCPバケット/${{github.event.pull_request.number}}/front が見れるURL \n 確認用環境：GCPバケット/${{github.event.pull_request.number}}/storybook が見れるURL' });
 
 
     # - id: upload-file-story

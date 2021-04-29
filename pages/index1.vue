@@ -18,7 +18,7 @@
           rel="noopener noreferrer"
           class="button--grey"
         >
-          GitHub
+          zzzzz
         </a>
       </div>
     </div>
