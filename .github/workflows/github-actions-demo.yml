@@ -44,25 +44,26 @@ jobs:
       # Find the PR associated with this push, if there is one.
 
 
-    - name: Install dependencies 👨🏻‍💻
-      run: yarn
+    # - name: Install dependencies 👨🏻‍💻
+    #   run: yarn
 
-    - name: Build front 👨🏻‍💻
-      run: yarn build
+    # - name: Build front 👨🏻‍💻
+    #   run: yarn build
 
     - id: upload-file
       # uses: google-github-actions/upload-cloud-storage@main
       uses: google-github-actions/upload-cloud-storage@main
       with:
         path: ./.nuxt
-        destination: bizocean-portal-front/front
+        destination: bizocean-portal-front/front-${{steps.findPr.outputs.pr}}abc
 
-    - id: upload-file-story
-      # uses: google-github-actions/upload-cloud-storage@main
-      uses: google-github-actions/upload-cloud-storage@main
-      with:
-        path: ./pages
-        destination: bizocean-portal-front/front
+
+    # - id: upload-file-story
+    #   # uses: google-github-actions/upload-cloud-storage@main
+    #   uses: google-github-actions/upload-cloud-storage@main
+    #   with:
+    #     path: ./storybook-static
+    #     destination: bizocean-portal-front/front
 
 
 
