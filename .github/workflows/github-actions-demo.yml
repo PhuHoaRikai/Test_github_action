@@ -14,13 +14,13 @@ jobs:
     steps:
     # - uses: actions/checkout@v1
 
-    - uses: jwalton/gh-find-current-pr@v1
-      id: findPr
-    # This will echo "Your PR is 7", or be skipped if there is no current PR.
-    - run: echo "Your PR is ${PR} ------------- pull_request:${{github.event.pull_request.number}} number:${{ github.event.number }} ----
-      if: success() && steps.findPr.outputs.number
-      env:
-        PR: ${{ steps.findPr.outputs.pr }}
+    # - uses: jwalton/gh-find-current-pr@v1
+    #   id: findPr
+    # # This will echo "Your PR is 7", or be skipped if there is no current PR.
+    # - run: echo "Your PR is ${PR} ------------- pull_request:${{github.event.pull_request.number}} number:${{ github.event.number }} ----
+    #   if: success() && steps.findPr.outputs.number
+    #   env:
+    #     PR: ${{ steps.findPr.outputs.pr }}
 
 
     - name: Checkout 🛎
@@ -44,28 +44,17 @@ jobs:
         echo "============= Your PR is >>> ${{ steps.findPr.outputs.pr }} <<< ==============="
         echo "============= github.event_name is >>> ${{ github.event_name }} <<< ==============="
 
-      # - uses: actions/checkout@v1
-      # Find the PR associated with this push, if there is one.
+    - name: Install dependencies 👨🏻‍💻
+      run: yarn
 
+    - name: Build front 👨🏻‍💻
+      run: yarn build
 
-    # - name: Install dependencies 👨🏻‍💻
-    #   run: yarn
-
-    # - name: Build front 👨🏻‍💻
-    #   run: yarn build
-
-    # - id: upload-file
-    #   # uses: google-github-actions/upload-cloud-storage@main
-    #   uses: google-github-actions/upload-cloud-storage@main
-    #   with:
-    #     path: ./pages
-    #     destination: bizocean-portal-front/front-${{steps.findPr.outputs.pr}}abc
-
-    # - name: Comment PR
-    #   uses: thollander/actions-comment-pull-request@master
-    #   with:
-    #     message: 'Example of message !'
-    #     GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    - id: upload-file
+      uses: google-github-actions/upload-cloud-storage@main
+      with:
+        path: ./nuxt
+        destination: bizocean-portal-front/GCPバケット/${{github.event.pull_request.number}}
 
     - name: 'Comment PR'
       uses: actions/github-script@0.3.0
@@ -73,8 +62,8 @@ jobs:
       with:
         github-token: ${{ secrets.GH_TOKEN }}
         script: |
-          const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
-          github.issues.createComment({ issue_number, owner, repo, body: 'Hello world ! 👋' });
+          const { issue: { number: issue_number }, repo: { owner, repo } } = context;
+          github.issues.createComment({ issue_number, owner, repo, body: 'GCPバケット/${{github.event.pull_request.number}}' });
 
 
     # - id: upload-file-story
