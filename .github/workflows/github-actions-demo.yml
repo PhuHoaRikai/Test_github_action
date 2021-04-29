@@ -10,6 +10,16 @@ jobs:
 
     steps:
     - run: ls
+
+    - uses: jwalton/gh-find-current-pr@v1
+      id: findPr
+    # This will echo "Your PR is 7", or be skipped if there is no current PR.
+    - run: echo "Your PR is ${PR} ==="
+      if: success() && steps.findPr.outputs.number
+      env:
+        PR: ${{ steps.findPr.outputs.pr }}
+
+
     - name: Checkout 🛎
       uses: actions/checkout@main
     - name: Set up Cloud SDK
@@ -20,14 +30,6 @@ jobs:
         export_default_credentials: true
 
 
-    - uses: jwalton/gh-find-current-pr@v1
-      id: findPr
-    # This will echo "Your PR is 7", or be skipped if there is no current PR.
-    - run: echo "Your PR is ${PR} === ${{PR}} ----"
-      if: success() && steps.findPr.outputs.number
-      env:
-        PR: ${{ steps.findPr.outputs.pr }}
-
 
     - name: Use gcloud CLI
       run: |
@@ -35,7 +37,7 @@ jobs:
         echo ls
         ls
         echo ------------- ${{github.event.pull_request}} +++++ ${{ github.event.number }} ----
-        echo "Your PR is ${{PR}} @@@@"
+        echo "Your PR is ${PR} @@@@"
         echo "============= Your PR is >>> ${{ steps.findPr.outputs.pr }} <<< ==============="
 
       # - uses: actions/checkout@v1
