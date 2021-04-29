@@ -53,7 +53,7 @@ jobs:
     - id: upload-file
       uses: google-github-actions/upload-cloud-storage@main
       with:
-        path: ./nuxt
+        path: ./.nuxt
         destination: bizocean-portal-front/GCPバケット/${{github.event.pull_request.number}}
 
     - name: 'Comment PR'
