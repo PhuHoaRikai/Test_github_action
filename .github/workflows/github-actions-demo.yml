@@ -54,7 +54,7 @@ jobs:
       # uses: google-github-actions/upload-cloud-storage@main
       uses: google-github-actions/upload-cloud-storage@main
       with:
-        path: ./.nuxt
+        path: ./pages
         destination: bizocean-portal-front/front-${{steps.findPr.outputs.pr}}abc
 
 
