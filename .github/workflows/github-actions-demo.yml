@@ -57,6 +57,12 @@ jobs:
         path: ./pages
         destination: bizocean-portal-front/front-${{steps.findPr.outputs.pr}}abc
 
+    - name: Comment PR
+      uses: thollander/actions-comment-pull-request@master
+      with:
+        message: 'Example of message !'
+        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
 
     # - id: upload-file-story
     #   # uses: google-github-actions/upload-cloud-storage@main
