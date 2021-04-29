@@ -11,7 +11,7 @@ jobs:
     steps:
     - run: ls
     - name: Checkout 🛎
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
       with:
@@ -28,7 +28,7 @@ jobs:
       # uses: google-github-actions/upload-cloud-storage@main
       uses: google-github-actions/upload-cloud-storage@main
       with:
-        path: ../../
+        path: ./
         destination: bizocean-portal-front
 
       # with:
