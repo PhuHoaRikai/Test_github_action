@@ -19,15 +19,7 @@ jobs:
         service_account_key: ${{ secrets.GCP_SA_KEY }}
         export_default_credentials: true
 
-    - name: Use gcloud CLI
-      run: |
-        gcloud info
-        echo ls
-        ls
-        echo ------------- ${{github.event.pull_request}} +++++ ${{ github.event.number }} ----
 
-      # - uses: actions/checkout@v1
-      # Find the PR associated with this push, if there is one.
     - uses: jwalton/gh-find-current-pr@v1
       id: findPr
     # This will echo "Your PR is 7", or be skipped if there is no current PR.
@@ -35,6 +27,19 @@ jobs:
       if: success() && steps.findPr.outputs.number
       env:
         PR: ${{ steps.findPr.outputs.pr }}
+
+
+    - name: Use gcloud CLI
+      run: |
+        gcloud info
+        echo ls
+        ls
+        echo ------------- ${{github.event.pull_request}} +++++ ${{ github.event.number }} ----
+        echo "============= Your PR is ${PR} ==============="
+
+      # - uses: actions/checkout@v1
+      # Find the PR associated with this push, if there is one.
+
 
 
           # - id: upload-file
