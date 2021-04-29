@@ -24,12 +24,16 @@ jobs:
         gcloud info
         echo ls
         ls
-    - id: upload-file
-      # uses: google-github-actions/upload-cloud-storage@main
-      uses: google-github-actions/upload-cloud-storage@main
-      with:
-        path: ./
-        destination: bizocean-portal-front
+        echo ${{github.event.pull_request}}
+    # - id: upload-file
+    #   # uses: google-github-actions/upload-cloud-storage@main
+    #   uses: google-github-actions/upload-cloud-storage@main
+    #   with:
+    #     path: ./
+    #     destination: bizocean-portal-front
+
+
+
 
       # with:
       #   path: ../../../
