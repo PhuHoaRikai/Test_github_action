@@ -57,11 +57,20 @@ jobs:
     #     path: ./pages
     #     destination: bizocean-portal-front/front-${{steps.findPr.outputs.pr}}abc
 
-    - name: Comment PR
-      uses: thollander/actions-comment-pull-request@master
+    # - name: Comment PR
+    #   uses: thollander/actions-comment-pull-request@master
+    #   with:
+    #     message: 'Example of message !'
+    #     GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+    - name: 'Comment PR'
+      uses: actions/github-script@0.3.0
+      if: github.event_name == 'pull_request'
       with:
-        message: 'Example of message !'
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        github-token: ${{ secrets.ACCESS_TOKEN }}
+        script: |
+          const { issue: { number: issue_number }, repo: { owner, repo }  } = context;
+          github.issues.createComment({ issue_number, owner, repo, body: 'Hello world ! 👋' });
 
 
     # - id: upload-file-story
