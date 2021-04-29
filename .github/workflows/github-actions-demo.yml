@@ -9,21 +9,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: ls
-    # - name: Set up Cloud SDK
-    #   uses: google-github-actions/setup-gcloud@master
-    #   with:
-    #     project_id: ${{ secrets.GCP_PROJECT_ID }}
-    #     service_account_key: ${{ secrets.GCP_SA_KEY }}
-    #     export_default_credentials: true
+    # - run: ls
+    - name: Set up Cloud SDK
+      uses: google-github-actions/setup-gcloud@master
+      with:
+        project_id: ${{ secrets.GCP_PROJECT_ID }}
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        export_default_credentials: true
 
-    # - name: Use gcloud CLI
-    #   run: gcloud info
-    # - id: upload-file
-    #   uses: google-github-actions/upload-cloud-storage@main
-    #   with:
-    #     path: ../../
-    #     destination: bizocean-portal-front
+    - name: Use gcloud CLI
+      run: gcloud info
+    - id: upload-file
+      uses: google-github-actions/upload-cloud-storage@main
+      with:
+        path: ../
+        destination: bizocean-portal-front
 
 
     # - uses: google-github-actions/setup-gcloud@master
