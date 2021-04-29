@@ -25,7 +25,19 @@ jobs:
         echo ls
         ls
         echo ------------- ${{github.event.pull_request}} +++++ ${{ github.event.number }} ----
-    # - id: upload-file
+    steps:
+      - uses: actions/checkout@v1
+      # Find the PR associated with this push, if there is one.
+      - uses: jwalton/gh-find-current-pr@v1
+        id: findPr
+      # This will echo "Your PR is 7", or be skipped if there is no current PR.
+      - run: echo "Your PR is ${PR}"
+        if: success() && steps.findPr.outputs.number
+        env:
+          PR: ${{ steps.findPr.outputs.pr }}
+
+
+          # - id: upload-file
     #   # uses: google-github-actions/upload-cloud-storage@main
     #   uses: google-github-actions/upload-cloud-storage@main
     #   with:
