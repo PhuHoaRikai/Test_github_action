@@ -56,8 +56,8 @@ jobs:
       uses: google-github-actions/upload-cloud-storage@main
       if: github.event_name == 'pull_request'
       with:
-        path: ./pages/
-        destination: bizocean-portal-front/${{github.event.pull_request.number}}
+        path: pages
+        destination: bizocean-portal-front/${{github.event.pull_request.number}}/pages/..
       # env:
       #   files: ${{steps.uploaded-files.outputs.uploaded}}
 
